@@ -8,11 +8,14 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 io.on("connection", (socket) => {
   console.log("🔌 New user connected! 🔌");
+  require('./sockets/chat.js')(io, socket);
+
 })
+
 
 //Express View Engine for Handlebars
 const exphbs  = require('express-handlebars');
-app.engine('handlebars', exphbs({ defaultLayout: "" }));
+app.engine('handlebars', exphbs({ defaultLayout: "" })); // to fix handlebar not found set defaultLayout: ""
 app.set('view engine', 'handlebars');
 
 //Establish your public folder
