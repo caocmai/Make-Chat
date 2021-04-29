@@ -35,5 +35,9 @@ socket.on('disconnect', () => {
   io.emit('user has left', onlineUsers);
 });
 
+socket.on('new channel', (newChannel) => {
+  console.log("new channel", newChannel);
+});
+
   
 };
